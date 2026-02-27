@@ -1,0 +1,58 @@
+# DAST Agent Configuration
+# Only use against targets you have explicit authorization to test.
+
+target:
+  url: ""
+  scope:
+    include_subdomains: true
+    allowed_domains: []
+    excluded_paths:
+      - "/logout"
+      - "/signout"
+      - "/delete"
+
+crawler:
+  max_depth: 5
+  max_pages: 500
+  request_delay: 0.3
+  timeout: 15
+  user_agent: "DAST-Agent/1.0 (Authorized Security Testing)"
+  respect_robots_txt: true
+  follow_redirects: true
+
+scanner:
+  modules:
+    - xss
+    - sqli
+    - ssrf
+    - idor
+    - cors
+    - open_redirect
+    - header_analysis
+  max_concurrency: 10
+  request_timeout: 15
+  rate_limit: 20  # requests per second
+  severity_threshold: "low"  # low, medium, high, critical
+
+fuzzer:
+  enabled: true
+  parameter_discovery: true
+  max_params_per_endpoint: 50
+  wordlist: "default"
+
+agent:
+  enabled: true
+  auto_escalate: true
+  max_retries: 3
+  finding_dedup: true
+  smart_crawl: true
+
+reporting:
+  output_dir: "./reports"
+  format: "html"
+  include_request_response: true
+  include_evidence: true
+
+logging:
+  level: "INFO"
+  file: "./dast-agent.log"
