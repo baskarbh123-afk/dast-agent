@@ -36,19 +36,19 @@ pip install -r requirements.txt
 
 ```bash
 # Show help
-docker run --rm dast-agent
+docker run --rm -it dast-agent
 
 # Basic scan
-docker run --rm -v $(pwd)/reports:/app/reports dast-agent -t https://your-target.com
+docker run --rm -it -v $(pwd)/reports:/app/reports dast-agent -t https://your-target.com
 
 # Fast scan with specific modules
-docker run --rm -v $(pwd)/reports:/app/reports dast-agent -t https://your-target.com --fast -m xss,sqli
+docker run --rm -it -v $(pwd)/reports:/app/reports dast-agent -t https://your-target.com --fast -m xss,sqli
 
 # Full scan with verbose output
-docker run --rm -v $(pwd)/reports:/app/reports dast-agent -t https://your-target.com -v
+docker run --rm -it -v $(pwd)/reports:/app/reports dast-agent -t https://your-target.com -v
 
 # Scan through a proxy (e.g., Burp Suite)
-docker run --rm -v $(pwd)/reports:/app/reports dast-agent -t https://your-target.com --proxy http://host.docker.internal:8080
+docker run --rm -it -v $(pwd)/reports:/app/reports dast-agent -t https://your-target.com --proxy http://host.docker.internal:8080
 ```
 
 ### Docker Compose
