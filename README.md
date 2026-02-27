@@ -49,6 +49,9 @@ docker run --rm -it -v $(pwd)/reports:/app/reports dast-agent -t https://your-ta
 
 # Scan through a proxy (e.g., Burp Suite)
 docker run --rm -it -v $(pwd)/reports:/app/reports dast-agent -t https://your-target.com --proxy http://host.docker.internal:8080
+
+# Save reports to Desktop
+docker run --rm -it -v ~/Desktop/reports:/app/reports dast-agent -t https://your-target.com
 ```
 
 ### Docker Compose
