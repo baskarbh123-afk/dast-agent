@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  dast-agent:
+    build: .
+    container_name: dast-agent
+    volumes:
+      - ./reports:/app/reports
+    environment:
+      - TERM=xterm-256color
+    stdin_open: true
+    tty: true
